@@ -12,7 +12,7 @@ import logging
 import arrow      # Replacement for datetime, based on moment.js
 
 # Our own modules
-import pre        # Preprocess schedule file
+import pre       # Preprocess schedule file
 import config     # Configure from configuration files or command line
 
 
@@ -46,7 +46,8 @@ schedule = pre.process(open(configuration.SYLLABUS))
 def index():
     """Main application page; most users see only this"""
     app.logger.debug("Main page entry")
-    flask.g.schedule = schedule  # To be accessible in Jinja2 on page
+    flask.g.schedule = schedule[1:]  # To be accessible in Jinja2 on page
+    flask.g.week = schedule[0]  # How many weeks it has been since first class
     return flask.render_template('syllabus.html')
 
 
@@ -93,6 +94,7 @@ def no_you_cant(error):
 def format_arrow_date(date):
     try:
         normal = arrow.get(date)
+        app.logger.debug(normal)
         return normal.format("ddd MM/DD/YYYY")
     except:
         return "(bad date)"

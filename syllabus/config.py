@@ -18,11 +18,11 @@ Potential extensions:
     to configuration files? (NO, for now)
 """
 
-
 import configparser
 import argparse
 import os
 import logging
+
 logging.basicConfig(format='%(levelname)s:%(message)s',
                     level=logging.INFO)
 
@@ -123,7 +123,7 @@ def configuration(proxied=False):
     log.debug("CLI variables: {}".format(cli_vars))
     config_file_paths = ["app.ini", "credentials.ini"]
     if cli_vars.get("config"):
-        config_file_path.append(cli_vars.get("config"))
+        config_file_paths.append(cli_vars.get("config"))
     log.debug("Will read config files from '{}'".format(config_file_paths))
     config_for_project = cli_vars.get("project", None)
     ini = config_file_args(config_file_paths, config_for_project)

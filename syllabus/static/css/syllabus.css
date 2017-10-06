@@ -2,11 +2,11 @@
  * A simple style sheet for course schedules 
  *
  * Original : M Young, September 2015
- * Revised:  
+ * Revised:  T Klasen, October 2017
  */
 
 body {
-	background: #EEE; 
+	background: #EEE;
 	color: #444;
 	font: normal 85% "Lucida Sans Unicode",sans-serif;
 	margin: 0;
@@ -30,8 +30,13 @@ tr.even {
     background-color: rgb(224,213,179);
 }
 
+tr.highlight {
+    /* Highlighting the Current Week*/
+    background-color: rgb(106,192,216);
+    font-weight: bold;
+}
+
 .class-schedule .week {
-    
     font-weight: bolder;
     font-size: 150%; 
     text-align: center; 
